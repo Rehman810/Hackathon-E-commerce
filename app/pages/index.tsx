@@ -9,7 +9,7 @@ import { FeaturedPosts } from '../components/featuredPosts/page';
 export default function Home() {
   return (
     <Box>
-      <Banner />
+      <Banner bg='banner.png'/>
       <EditorsPick />
       <FeaturedProducts />
       <ClassicProduct />

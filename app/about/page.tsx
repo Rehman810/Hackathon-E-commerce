@@ -1,10 +1,10 @@
-import Products from "@/app/pages/products";
+import AboutUs from "@/app/pages/aboutUs";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <Products />
+      <AboutUs />
     </div>
   );
 };

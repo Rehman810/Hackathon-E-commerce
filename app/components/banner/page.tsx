@@ -1,9 +1,18 @@
+"use client"
 import { Box, Typography, Button } from '@mui/material';
+import { usePathname } from 'next/navigation';
 
-export const Banner = () => (
+interface BannerProps {
+  bg: string;
+}
+
+export const Banner = ({bg}: BannerProps) => {
+  const pathname = usePathname();
+
+  return (
   <Box
     sx={{
-      backgroundImage: 'url(/banner.png)', 
+      backgroundImage: `url(/${bg})`, 
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -21,6 +30,7 @@ export const Banner = () => (
         textAlign: 'left',
         marginLeft: { xs: '0', sm: '3rem', md: '10rem' }, 
       }}
+      color={pathname == "/" ? "white" : "black"}
     >
       <Typography
         variant="h6"
@@ -40,7 +50,7 @@ export const Banner = () => (
           lineHeight: { xs: '1.2', md: '1.1' },
         }}
       >
-        New Collection
+        {pathname == "/" ? "New Collection" : "About Us"}
       </Typography>
 
       <Typography
@@ -57,16 +67,16 @@ export const Banner = () => (
       <Button
         variant="contained"
         sx={{
-          backgroundColor: '#2DC071',
-          '&:hover': { backgroundColor: '#27a165' },
+          backgroundColor: pathname == "/" ? '#2DC071' : "#23A6F0",
+          '&:hover': {backgroundColor: '#27a165' },
           paddingX: { xs: '1.5rem', sm: '2rem' },
           paddingY: { xs: '0.8rem', sm: '1rem' },
           fontSize: { xs: '14px', sm: '16px', md: '18px' },
           textTransform: 'uppercase',
         }}
       >
-        Shop Now
+        {pathname == "/" ? "Shop Now" : "Get Quote Now"}
       </Button>
     </Box>
   </Box>
-);
+)}
