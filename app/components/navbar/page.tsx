@@ -21,10 +21,12 @@ import PersonIcon from "@mui/icons-material/Person";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const router = useRouter();
 
   const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -59,11 +61,13 @@ export const Navbar = () => {
             "@media (max-width: 1000px)": { display: "none" },
           }}
         >
-          <Button color="inherit">Home</Button>
+          <Button color="inherit" onClick={() => router.push("/")}>
+            Home
+          </Button>
           <Button
             color="inherit"
             endIcon={<KeyboardArrowDownIcon />}
-            onClick={handleMenuClick}
+            onClick={() => router.push("/products")}
           >
             Shop
           </Button>

@@ -1,10 +1,11 @@
+import Products from '@/app/pages/products'
 import React from 'react'
-import Home from './pages/index'
 
 const page = () => {
   return (
     <div>
-      <Home />
+            <Products />
+
     </div>
   )
 }

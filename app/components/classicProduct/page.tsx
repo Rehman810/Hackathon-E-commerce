@@ -1,5 +1,4 @@
 import { Box, Typography, Button, Stack } from '@mui/material';
-import Image from 'next/image';
 
 export const ClassicProduct = () => (
   <Box
@@ -78,7 +77,7 @@ export const ClassicProduct = () => (
       p={2}
       sx={{ width: '100%', display: { md: 'block' } }} 
     >
-      <Image
+      <img
         src="/classicProduct.png"
         alt="Classic Product"
         style={{ maxWidth: '100%', height: 'auto' }}

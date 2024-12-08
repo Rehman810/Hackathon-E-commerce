@@ -1,17 +1,22 @@
+"use client"
 import { Box, Typography, IconButton } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
+import { usePathname } from "next/navigation"; 
 
-export const Header = () => (
+export const Header = () => {
+    const pathname = usePathname()
+    const param = pathname == "/"
+    return(
   <Box
     display="flex"
     justifyContent="space-between"
     alignItems="center"
     p={1}
-    bgcolor="#252B42"
+    bgcolor={param ? "#252B42" :  "#23856D"}
     color="white"
     flexWrap="wrap"
   >
@@ -61,4 +66,5 @@ export const Header = () => (
       </IconButton>
     </Box>
   </Box>
-);
+  )
+};

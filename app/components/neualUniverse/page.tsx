@@ -1,5 +1,4 @@
 import { Box, Typography, Button, Stack } from "@mui/material";
-import Image from "next/image";
 
 export const NeuralUniverse = () => (
   <Box
@@ -13,7 +12,7 @@ export const NeuralUniverse = () => (
     }}
   >
     <Box flex="1" display="flex" justifyContent="center" p={2}>
-      <Image 
+      <img
         src="/neuralUniverse.png"
         alt="Split Section"
         style={{ maxWidth: "100%", height: "auto" }}
