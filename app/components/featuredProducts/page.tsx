@@ -1,4 +1,6 @@
-"use client"
+"use client";
+
+import React from "react";
 import {
   Box,
   Grid,
@@ -8,6 +10,7 @@ import {
   Typography,
   Stack,
 } from "@mui/material";
+import { useRouter } from "next/navigation"; // Correct import for App Router
 import { usePathname } from "next/navigation";
 
 const products = [
@@ -47,50 +50,22 @@ const products = [
     image: "/p4.png",
     colors: ["purple", "pink", "aqua", "lime"],
   },
-  {
-    id: 1,
-    title: "Stylish Shirt",
-    description: "A comfortable and stylish shirt for any occasion.",
-    price: "$30",
-    oldPrice: "$40",
-    image: "/p5.png",
-    colors: ["red", "blue", "green", "yellow"],
-  },
-  {
-    id: 2,
-    title: "Classic Pants",
-    description: "Durable and sleek pants that suit all styles.",
-    price: "$50",
-    oldPrice: "$65",
-    image: "/p6.png",
-    colors: ["black", "gray", "white", "navy"],
-  },
-  {
-    id: 3,
-    title: "Fashion Jacket",
-    description: "A fashionable jacket to keep you warm and trendy.",
-    price: "$80",
-    oldPrice: "$100",
-    image: "/p7.png",
-    colors: ["brown", "orange", "olive", "tan"],
-  },
-  {
-    id: 4,
-    title: "Comfort Shoes",
-    description: "Shoes designed for ultimate comfort and durability.",
-    price: "$60",
-    oldPrice: "$75",
-    image: "/p8.png",
-    colors: ["purple", "pink", "aqua", "lime"],
-  },
 ];
 
-export const FeaturedProducts = () => {
-  const pathname = usePathname();
-  const param = pathname == "/";
+const FeaturedProducts = () => {
+  const pathname = usePathname(); // Correct usage for App Router
+  const isHomePage = pathname === "/";
+
+  const router = useRouter(); // Correct usage for App Router
+
+  const handleProductClick = (id: number) => {
+    router.push(`/products/${id}`);
+  };
+  
+
   return (
     <Box p={4} textAlign="center">
-      {param && (
+      {isHomePage && (
         <>
           <Typography variant="body2" sx={{ color: "gray" }}>
             Featured Products
@@ -107,10 +82,16 @@ export const FeaturedProducts = () => {
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={3} key={product.id}>
             <Card
+              onClick={() => handleProductClick(product.id)}
               sx={{
                 boxShadow: "none",
                 borderRadius: "10px",
                 overflow: "hidden",
+                cursor: "pointer",
+                "&:hover": {
+                  transform: "scale(1.02)",
+                  transition: "transform 0.2s",
+                },
               }}
             >
               <CardMedia
@@ -120,7 +101,6 @@ export const FeaturedProducts = () => {
                 alt={product.title}
                 sx={{ objectFit: "contain" }}
               />
-
               <CardContent sx={{ textAlign: "center", p: 2 }}>
                 <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                   {product.title}
@@ -128,7 +108,6 @@ export const FeaturedProducts = () => {
                 <Typography variant="body2" sx={{ color: "gray", mb: 1 }}>
                   {product.description}
                 </Typography>
-
                 <Stack
                   direction="row"
                   justifyContent="center"
@@ -138,8 +117,8 @@ export const FeaturedProducts = () => {
                 >
                   <Typography
                     variant="h6"
-                    fontWeight={"bold"}
-                    sx={{ color: "gray" }}
+                    fontWeight="bold"
+                    sx={{ color: "gray", textDecoration: "line-through" }}
                   >
                     {product.oldPrice}
                   </Typography>
@@ -151,7 +130,6 @@ export const FeaturedProducts = () => {
                     {product.price}
                   </Typography>
                 </Stack>
-
                 <Stack direction="row" justifyContent="center" spacing={1}>
                   {product.colors.map((color, index) => (
                     <Box
@@ -174,3 +152,5 @@ export const FeaturedProducts = () => {
     </Box>
   );
 };
+
+export default FeaturedProducts;

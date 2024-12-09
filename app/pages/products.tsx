@@ -1,5 +1,7 @@
+
 import { ClientsSection } from '../components/clients/page';
-import { FeaturedProducts } from '../components/featuredProducts/page';
+import FeaturedProducts from '../components/featuredProducts/page';
+// import { FeaturedProducts } from '../components/featuredProducts/page';
 import { ShopCards } from '../components/shopCards/page';
 
 export default function Products() {
@@ -7,7 +9,8 @@ export default function Products() {
     <>
     <ShopCards />
     <ClientsSection />
-    <FeaturedProducts />
+    <FeaturedProducts/>
+    {/* <FeaturedProducts /> */}
       </>
   );
 }
