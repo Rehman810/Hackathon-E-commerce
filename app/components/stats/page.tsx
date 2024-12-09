@@ -18,10 +18,10 @@ const StatCard = ({ title, value }: StatCardProps) => (
 
 const StatsSection = () => {
   const stats = [
-    { title: 'Total Users', value: '15K' },
-    { title: 'Subscribers', value: '150K' },
-    { title: 'Years Active', value: '15' },
-    { title: 'Companies', value: '100+' },
+    { title: 'Happy Customers', value: '15K' },
+    { title: 'Monthly Visitors', value: '150K' },
+    { title: 'Countries Wordlwide', value: '15' },
+    { title: 'Top Partners', value: '100+' },
   ];
 
   return (

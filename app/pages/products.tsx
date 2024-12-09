@@ -7,7 +7,7 @@ export default function Products() {
     <>
     <ShopCards />
     <ClientsSection />
-      <FeaturedProducts />
+    <FeaturedProducts />
       </>
   );
 }
