@@ -1,4 +1,5 @@
 import BreadCrumb from "../components/breadCrumb/page";
+import CtaBanner from "../components/Cta/CtaBanner";
 import Gallery from "../components/gallery/page";
 import TeamSection from "../components/team/page";
 
@@ -12,6 +13,7 @@ export default function Team() {
       />
       <Gallery />
       <TeamSection />
+      <CtaBanner/>
     </>
   );
 }

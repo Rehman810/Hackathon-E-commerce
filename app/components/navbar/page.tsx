@@ -72,9 +72,9 @@ export const Navbar = () => {
             Shop
           </Button>
           <Button color="inherit" onClick={() => router.push("/about")}>About</Button>
-          <Button color="inherit">Blog</Button>
-          <Button color="inherit">Contact</Button>
-          <Button color="inherit">Pages</Button>
+          <Button color="inherit" onClick={() => router.push("/pricing")}>Pricing</Button>
+          <Button color="inherit" onClick={() => router.push("/team")}>Team</Button>
+          <Button color="inherit" onClick={() => router.push("/contact")}>Contact</Button>
         </Box>
 
         <Menu
