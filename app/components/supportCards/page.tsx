@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button, Grid } from "@mui/material";
+import { Box, Typography, Button, Grid, Container } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
@@ -34,18 +34,20 @@ const contactData: ContactInfo[] = [
 
 const ContactSection: React.FC = () => {
   return (
+
+    <>
     <Box
       sx={{
         py: 5,
-        px: 3,
-        backgroundColor: "#f9f9f9",
+        px: 10,
+        // backgroundColor: "#f9f9f9",
         textAlign: "center",
       }}
     >
       <Typography
         variant="subtitle1"
         color="textSecondary"
-        sx={{ textTransform: "uppercase", mb: 1 }}
+        sx={{ textTransform: "uppercase", mb: 1, mt:3 }}
       >
         Visit Our Office
       </Typography>
@@ -54,15 +56,19 @@ const ContactSection: React.FC = () => {
         fontWeight="bold"
         sx={{
           mb: 4,
+          pb:4,
         }}
       >
         We help small businesses <br /> with big ideas
       </Typography>
       <Grid
         container
-        spacing={3}
+        spacing={0}
+        display="flex"
         justifyContent="center"
-        alignItems="stretch" 
+        alignItems="flex-start" 
+        paddingBottom='50px'
+
       >
         {contactData.map((item, index) => (
           <Grid
@@ -70,17 +76,18 @@ const ContactSection: React.FC = () => {
             item
             xs={12}
             sm={6}
-            md={4}
+            md={3}
             sx={{
               display: "flex",
               justifyContent: "center",
+              padding: "0", 
             }}
           >
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: index === 1 ? "#002244" : "transparent",
                 color: index === 1 ? "#fff" : "inherit",
@@ -93,9 +100,11 @@ const ContactSection: React.FC = () => {
                     : "1px solid rgba(0, 0, 0, 0.1)",
                 textAlign: "center",
                 width: "100%",
-                maxWidth: "300px", 
-                minHeight: "300px",
+                maxWidth: "300px",
+                minHeight: index === 1 ? "320px" : "300px", 
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                marginTop: index === 1 ? -2 : 0, 
+                marginBottom: index === 1 ? 0 : "0 auto",
               }}
             >
               {item.icon}
@@ -125,7 +134,39 @@ const ContactSection: React.FC = () => {
         ))}
       </Grid>
     </Box>
+
+    <Box py={6} textAlign="center" bgcolor="background.paper">
+      <Container maxWidth="sm">
+        {/* Title */}
+        <Typography
+          color="text.primary"
+          gutterBottom
+        >
+          WE Cant WAIT TO MEET YOU 
+        </Typography>
+
+        {/* Description */}
+        <Typography variant="h4" fontWeight="bold" color="#000" mb={3}>
+        Let’s Talk
+        </Typography>
+
+        {/* CTA Button */}
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{ borderRadius: '8px', textTransform: 'none' }}
+        >
+          Try it free now
+        </Button>
+      </Container>
+    </Box>
+
+    </>
+    
+    
   );
 };
 
 export default ContactSection;
+

@@ -2,6 +2,7 @@
 import React from "react";
 import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import BreadCrumb from "../breadCrumb/page";
 
 const Pricebanner = () => {
   const pricingPlans = [
@@ -23,39 +24,41 @@ const Pricebanner = () => {
   ];
 
   return (
+    <>
+    <BreadCrumb h1="PRICING" para="Simple Pricing" route="Pricing"/>
     <Box
       sx={{
         py: 5,
-        px: { xs: 2, sm: 5, md: 15 }, // Responsive padding
-        backgroundColor: "#f7f9fc",
+        px: { xs: 2, sm: 5, md: 15 },
         display: "flex",
         justifyContent: "center",
+        mt:'100px',
       }}
     >
       <Grid
         container
-        spacing={0} // Add spacing between cards
+        spacing={0} 
         justifyContent="center"
         alignItems="stretch"
       >
         {pricingPlans.map((plan, index) => (
           <Grid
             item
-            xs={12} // Full width on extra-small screens
-            sm={12} // Full width on small screens
-            md={index === 1 ? 4 : 3} // On medium screens, center card is wider
-            lg={index === 1 ? 4 : 3} // Keep the layout on large screens
+            xs={12} 
+            sm={12} 
+            md={index === 1 ? 4 : 3} 
+            lg={index === 1 ? 4 : 3} 
             key={plan.title}
           >
             <Card
               sx={{
                 textAlign: "center",
-                minHeight: index === 1 ? 400 : 350, // Middle card taller
+                minHeight: index === 1 ? 400 : 350, 
                 backgroundColor: index === 1 ? "#002244" : "#ffffff",
                 color: index === 1 ? "#ffffff" : "#333333",
                 boxShadow: 3,
                 borderRadius: 2,
-                marginTop: index === 1 ? -5 : 0, // Increase middle card height from top
+                marginTop: index === 1 ? -5 : 0, 
                 marginBottom: index === 1 ? 0 : "0 auto",
               }}
             >
@@ -106,7 +109,9 @@ const Pricebanner = () => {
         ))}
       </Grid>
     </Box>
-  );
+
+    </>
+      );
 };
 
 export default Pricebanner;
