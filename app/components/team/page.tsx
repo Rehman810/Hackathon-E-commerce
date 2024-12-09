@@ -55,41 +55,32 @@ const TeamMember = ({ name, role, imgSrc, facebookUrl, instagramUrl, twitterUrl 
   </Box>
 );
 
-const TeamSection = () => {
+type TeamSectionProps = {
+  showThree?: boolean; 
+};
+
+const TeamSection = ({ showThree = false }: TeamSectionProps) => {
   const team = [
-    {
-      name: 'Alice',
-      role: 'Designer',
-      imgSrc: '/member1.png',
-      facebookUrl: 'https://facebook.com/alice',
-      instagramUrl: 'https://instagram.com/alice',
-      twitterUrl: 'https://twitter.com/alice',
-    },
-    {
-      name: 'Bob',
-      role: 'Developer',
-      imgSrc: '/member2.png',
-      facebookUrl: 'https://facebook.com/bob',
-      instagramUrl: 'https://instagram.com/bob',
-      twitterUrl: 'https://twitter.com/bob',
-    },
-    {
-      name: 'Charlie',
-      role: 'Manager',
-      imgSrc: '/member3.png',
-      facebookUrl: 'https://facebook.com/charlie',
-      instagramUrl: 'https://instagram.com/charlie',
-      twitterUrl: 'https://twitter.com/charlie',
-    },
+    { name: 'Alice', role: 'Designer', imgSrc: '/member1.png', facebookUrl: 'https://facebook.com/alice', instagramUrl: 'https://instagram.com/alice', twitterUrl: 'https://twitter.com/alice' },
+    { name: 'Bob', role: 'Developer', imgSrc: '/member2.png', facebookUrl: 'https://facebook.com/bob', instagramUrl: 'https://instagram.com/bob', twitterUrl: 'https://twitter.com/bob' },
+    { name: 'Charlie', role: 'Manager', imgSrc: '/member3.png', facebookUrl: 'https://facebook.com/charlie', instagramUrl: 'https://instagram.com/charlie', twitterUrl: 'https://twitter.com/charlie' },
+    { name: 'Alice', role: 'Designer', imgSrc: '/member4.png', facebookUrl: 'https://facebook.com/alice', instagramUrl: 'https://instagram.com/alice', twitterUrl: 'https://twitter.com/alice' },
+    { name: 'Bob', role: 'Developer', imgSrc: '/member5.jpg', facebookUrl: 'https://facebook.com/bob', instagramUrl: 'https://instagram.com/bob', twitterUrl: 'https://twitter.com/bob' },
+    { name: 'Charlie', role: 'Manager', imgSrc: '/member6.jpg', facebookUrl: 'https://facebook.com/charlie', instagramUrl: 'https://instagram.com/charlie', twitterUrl: 'https://twitter.com/charlie' },
+    { name: 'Alice', role: 'Designer', imgSrc: '/member7.jpg', facebookUrl: 'https://facebook.com/alice', instagramUrl: 'https://instagram.com/alice', twitterUrl: 'https://twitter.com/alice' },
+    { name: 'Bob', role: 'Developer', imgSrc: '/member8.jpg', facebookUrl: 'https://facebook.com/bob', instagramUrl: 'https://instagram.com/bob', twitterUrl: 'https://twitter.com/bob' },
+    { name: 'Charlie', role: 'Manager', imgSrc: '/member9.jpg', facebookUrl: 'https://facebook.com/charlie', instagramUrl: 'https://instagram.com/charlie', twitterUrl: 'https://twitter.com/charlie' },
   ];
 
+  const membersToDisplay = showThree ? team.slice(0, 3) : team;
+
   return (
-    <Box py={4} >
+    <Box py={4}>
       <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
         Meet Our Team
       </Typography>
       <Grid container spacing={4} justifyContent="center">
-        {team.map((member, index) => (
+        {membersToDisplay.map((member, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <TeamMember {...member} />
           </Grid>
